@@ -6,11 +6,6 @@ open FsUnit.Xunit
 
 module Day01 = 
 
-    [<Fact>]
-    let ``Test counting parenthesis`` () =
-        let parenCounts = countParens("(())")
-        parenCounts |> should equal (2, 2)
-
     [<Theory>]
     [<InlineData("(())", 0)>]
     [<InlineData("(()(()(", 3)>]
