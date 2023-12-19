@@ -13,7 +13,7 @@ let readFileLines (year: int, filename: string) : string array =
     Path.Combine(assemblyDirectory, "./Data", $"{year}", filename) 
     |> File.ReadAllLines
 
-let readFileLinesByDay (year: int, day: int) : string array =
-    let formattedDay = sprintf "%02i" day
+let readFileLinesByDay (year: int) (day: int) : string array =
+    let formattedDay = sprintf "day%02i.txt" day
     readFileLines(year, formattedDay)
 
