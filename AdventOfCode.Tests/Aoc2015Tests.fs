@@ -3,6 +3,7 @@ namespace Tests.Year2015
 open Xunit
 open Aoc2015.Day01
 open Aoc2015.Day02
+open Aoc2015.Day03
 open FsUnit.Xunit
 
 module Day01Tests = 
@@ -37,3 +38,21 @@ module Day02Tests =
     let ``Test calculating the of ribbon needed`` (line: string, expected: int) =
         let boxDimensions = parseLine line
         calculateRibbonLength boxDimensions |> should equal expected
+
+module Day03Tests =
+
+    [<Theory>]
+    [<InlineData(">", 2)>]
+    [<InlineData("^>v<", 4)>]
+    [<InlineData("^v^v^v^v^v", 2)>]
+    let ``Test delivering presents path`` (line: string, expected: int) =
+        let housesVisited = housesVisited (0, 0) line
+        housesVisited.Count |> should equal expected
+
+    [<Theory>]
+    [<InlineData("^v", 3)>]
+    [<InlineData("^>v<", 3)>]
+    [<InlineData("^v^v^v^v^v", 11)>]
+    let ``Test robo Santa delivering presents path`` (line: string, expected: int) =
+        let housesVisited = housesVisitedDuo (0, 0) line
+        housesVisited.Count |> should equal expected
