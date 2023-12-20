@@ -22,19 +22,17 @@ let housesVisited (startingPoint: Point) (directions: string) : Set<Point> =
         point <- nextPoint
     pointSet
 
-let housesVisitedDuo (startingPoint: Point) (directions: string) : Set<Point> =
+let housesVisitedRoboSanta (startingPoint: Point) (directions: string) : Set<Point> =
     let mutable pointSet: Set<Point> = Set([startingPoint])
     let mutable santaPoint = startingPoint
     let mutable roboSantaPoint = startingPoint
     for i in 0..directions.Length - 1 do
         if i % 2 = 0 then
-            let nextSantaPoint = pointApplyDirection(santaPoint, directions[i])
-            pointSet <- pointSet.Add(nextSantaPoint)
-            santaPoint <- nextSantaPoint
+            santaPoint <- pointApplyDirection(santaPoint, directions[i])
+            pointSet <- pointSet.Add(santaPoint)
         else
-            let nextRoboSantaPoint = pointApplyDirection(santaPoint, directions[i])
-            pointSet <- pointSet.Add(nextRoboSantaPoint)
-            roboSantaPoint <- nextRoboSantaPoint
+            roboSantaPoint <- pointApplyDirection(roboSantaPoint, directions[i])
+            pointSet <- pointSet.Add(roboSantaPoint)
     pointSet
 
 let part1Solution = 
@@ -44,5 +42,5 @@ let part1Solution =
 
 let part2Solution = 
     let line = DataLoaders.readFile(2015, "day03.txt")
-    let visited = housesVisitedDuo (0, 0) line
+    let visited = housesVisitedRoboSanta (0, 0) line
     visited.Count

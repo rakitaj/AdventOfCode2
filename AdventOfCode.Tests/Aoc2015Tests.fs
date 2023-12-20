@@ -54,5 +54,5 @@ module Day03Tests =
     [<InlineData("^>v<", 3)>]
     [<InlineData("^v^v^v^v^v", 11)>]
     let ``Test robo Santa delivering presents path`` (line: string, expected: int) =
-        let housesVisited = housesVisitedDuo (0, 0) line
+        let housesVisited = housesVisitedRoboSanta (0, 0) line
         housesVisited.Count |> should equal expected
