@@ -1,35 +1,28 @@
 ﻿namespace AdventOfCode.Solutions.Common;
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 public class Grid<T>
 {
-    public T[] Raw { get; set; }
+    public IReadOnlyList<IReadOnlyList<T>> Raw { get; set; }
     public int RowLength { get; }
 
-    public Grid(T[] array1d, int rowLength)
+    public Grid(IReadOnlyList<T> array1d, int rowLength)
     {
         this.RowLength = rowLength;
-        this.Raw = array1d;
+        this.Raw = array1d.Chunk(this.RowLength).ToArray();
     }
 
-    public Grid(T[][] array2d)
+    public Grid(IReadOnlyList<IReadOnlyList<T>> array2d)
     {
-        var lineLengths = array2d.Select(line => line.Length).Distinct();
-        if (lineLengths.Count() > 1)
-        {
-            throw new ArgumentException("All the line in the grid must be the same length.");
-        }
-        this.RowLength = lineLengths.Single();
-        this.Raw = array2d.SelectMany(x => x).ToArray();
+        this.RowLength = array2d.Select(line => line.Count).Distinct().Single();
+        this.Raw = array2d;
     }
 
-    public static Grid<char> FromStringLists(IReadOnlyList<IReadOnlyList<string>> stringArrays)
+    public static Grid<char> FromStringLists(IReadOnlyList<string> stringGrid)
     {
-
+        var charGrid = stringGrid.Select(s => s.ToCharArray()).ToArray();
+        return new Grid<char>(charGrid);
     }
 }

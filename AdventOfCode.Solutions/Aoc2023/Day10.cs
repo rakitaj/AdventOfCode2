@@ -11,6 +11,11 @@ using System.Threading.Tasks;
 public class Day10 : Answer
 {
 
+
+    public Day10(int year, int day) : base(year, day)
+    {
+    }
+
     public override string Part1()
     {
         throw new NotImplementedException();
