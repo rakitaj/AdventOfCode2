@@ -30,6 +30,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AdventOfCode.Console\AdventOfCode.Console.fsproj" />
+    <ProjectReference Include="..\AdventOfCode.Solutions\AdventOfCode.Solutions.csproj" />
   </ItemGroup>
 
 </Project>

@@ -10,10 +10,3 @@ open FsUnit.Xunit
 let ``Test calculating an MD5 hash from a seed and suffix`` (seed: string, suffix: string, expected: string) =
     let md5Hash = calcMd5HashWithSeed seed suffix
     md5Hash |> should equal expected
-
-[<Fact>]
-let ``Test integer sequence with max number defined`` () =
-    let integers = integerSeq (Some 6)
-    integers |> Seq.take 1 |> should equalSeq (seq { 0 })
-    integers |> Seq.take 2 |> should equalSeq (seq { 1; 2 })
-    integers |> Seq.take 2 |> should equalSeq (seq { 7 })

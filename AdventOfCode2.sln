@@ -7,6 +7,8 @@ Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "AdventOfCode.Tests", "Adven
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "AdventOfCode.Console", "AdventOfCode.Console\AdventOfCode.Console.fsproj", "{AD64D68A-3C8D-46CB-8A67-0AFE8E44B49E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode.Solutions", "AdventOfCode.Solutions\AdventOfCode.Solutions.csproj", "{8AFFA549-D5C2-48A8-B43D-A63DEC8F4CBB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,8 +23,15 @@ Global
 		{AD64D68A-3C8D-46CB-8A67-0AFE8E44B49E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD64D68A-3C8D-46CB-8A67-0AFE8E44B49E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD64D68A-3C8D-46CB-8A67-0AFE8E44B49E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AFFA549-D5C2-48A8-B43D-A63DEC8F4CBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AFFA549-D5C2-48A8-B43D-A63DEC8F4CBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AFFA549-D5C2-48A8-B43D-A63DEC8F4CBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AFFA549-D5C2-48A8-B43D-A63DEC8F4CBB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B04B8A7A-DBA8-4D66-BFFC-FD6E4164299D}
 	EndGlobalSection
 EndGlobal
