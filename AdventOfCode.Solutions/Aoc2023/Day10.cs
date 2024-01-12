@@ -12,7 +12,7 @@ public class Day10 : Answer
 {
 
 
-    public Day10(int year, int day) : base(year, day)
+    public Day10() : base(2023, 10)
     {
     }
 

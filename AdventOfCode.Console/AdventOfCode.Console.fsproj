@@ -6,7 +6,6 @@
   <ItemGroup>
     <Compile Include="CommonFunctions.fs" />
     <Compile Include="DataLoaders.fs" />
-    <Compile Include="Aoc2015\Day04.fs" />
     <Compile Include="Aoc2015\Day03.fs" />
     <Compile Include="Aoc2015\Day02.fs" />
     <Compile Include="Aoc2015\Day01.fs" />

@@ -26,3 +26,17 @@ let ``Test Points with the same values should be equal`` () =
 [<Fact>]
 let ``Test Points with different values should not be equal`` () =
     Point(2, 8) = Point(3, 8) |> should be False
+
+[<Theory>]
+[<InlineData(0, 0, '.')>]
+[<InlineData(1, 1, 'F')>]
+[<InlineData(1, 2, '|')>]
+[<InlineData(3, 1, '7')>]
+let ``Test Grid get point`` (x: int) (y: int) (expected: char) =
+    let sampleGridData = """.....
+.F-7.
+.|.|.
+.L-J.
+....."""
+    let grid = sampleGridData.SplitLines() |> Grid<char>.FromStringLists
+    grid.Get(x, y) |> should equal expected

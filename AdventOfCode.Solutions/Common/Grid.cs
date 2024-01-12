@@ -25,4 +25,14 @@ public class Grid<T>
         var charGrid = stringGrid.Select(s => s.ToCharArray()).ToArray();
         return new Grid<char>(charGrid);
     }
+
+    public T Get(int x, int y)
+    {
+        return this.Raw[y][x];
+    }
+
+    public T Get(Point p)
+    {
+        return this.Raw[p.Y][p.X];
+    }
 }
