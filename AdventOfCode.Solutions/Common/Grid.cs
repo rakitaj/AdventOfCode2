@@ -26,6 +26,16 @@ public class Grid<T> where T: IEquatable<T>
         return new Grid<char>(charGrid);
     }
 
+    public bool InBounds(Point p)
+    {
+        return this.InBounds(p.X, p.Y);
+    }
+
+    public bool InBounds(int x, int y)
+    {
+        return x >= 0 && x < this.Raw[y].Count && y >= 0 && y < this.Raw.Count;
+    }
+
     public T Get(int x, int y)
     {
         return this.Raw[y][x];
@@ -33,7 +43,29 @@ public class Grid<T> where T: IEquatable<T>
 
     public T Get(Point p)
     {
-        return this.Raw[p.Y][p.X];
+        return this.Get(p.X, p.Y);
+    }
+
+    public List<Point> Adjacent(Point p)
+    {
+        var adjacentPoints = new List<Point>();
+        List<int> deltas = [-1, 0, 1];
+        foreach(var xDelta in deltas)
+        {
+            foreach(var yDelta in deltas)
+            {
+                if (xDelta == 0 && yDelta == 0)
+                {
+                    continue;
+                }
+                var transformedPoint = p.Transform(xDelta, yDelta);
+                if (this.InBounds(transformedPoint))
+                {
+                    adjacentPoints.Add(transformedPoint);
+                }
+            }
+        }
+        return adjacentPoints;
     }
 
     public Point? Find(T element)

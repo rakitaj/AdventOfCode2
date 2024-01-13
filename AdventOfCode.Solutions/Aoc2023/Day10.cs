@@ -23,9 +23,10 @@ public class Day10 : Answer
         ['F'] = [ Tuple.Create(0, 1), Tuple.Create(1, 0)]
     };
 
-    public List<Point> FindPath(Point start)
+    public List<Point> FindPath()
     {
-
+        var start = this.PipesGrid.Find('S');
+        throw new NotImplementedException();
     }
 
     public Day10(Grid<char> grid) : base(2023, 10)

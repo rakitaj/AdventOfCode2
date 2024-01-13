@@ -38,5 +38,31 @@ let ``Test Grid get point`` (x: int) (y: int) (expected: char) =
 .|.|.
 .L-J.
 ....."""
-    let grid = sampleGridData.SplitLines() |> Grid<char>.FromStringLists
+    let grid = sampleGridData.Split() |> Grid<char>.FromStringLists
     grid.Get(x, y) |> should equal expected
+
+[<Theory>]
+[<InlineData(0, 0, true)>]
+[<InlineData(1, 1, true)>]
+[<InlineData(1, 2, true)>]
+[<InlineData(-1, 2, false)>]
+[<InlineData(5, 1, false)>]
+let ``Test Grid in bounds`` (x: int) (y: int) (expected: bool) =
+    let sampleGridData = """.....
+.F-7.
+.|.|.
+.L-J.
+....."""
+    let grid = sampleGridData.Split() |> Grid<char>.FromStringLists
+    grid.InBounds(x, y) |> should equal expected
+
+[<Fact>]
+let ``Test Grid adjacent points`` () =
+    let sampleGridData = """.....
+.F-7.
+.|.|.
+.L-J.
+....."""
+    let grid = sampleGridData.Split() |> Grid<char>.FromStringLists
+    let p = Point(0, 2)
+    grid.Adjacent(p).Count |> should equal 5
