@@ -3,7 +3,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-public class Grid<T>
+public class Grid<T> where T: IEquatable<T>
 {
     public IReadOnlyList<IReadOnlyList<T>> Raw { get; set; }
     public int RowLength { get; }
@@ -34,5 +34,20 @@ public class Grid<T>
     public T Get(Point p)
     {
         return this.Raw[p.Y][p.X];
+    }
+
+    public Point? Find(T element)
+    {
+        for(var row = 0; row < this.Raw.Count; row++)
+        {
+            for(var column = 0; column < this.Raw[row].Count; column++)
+            {
+                if (this.Raw[row][column].Equals(element))
+                {
+                    return new Point(column, row);
+                }
+            }
+        }
+        return null;
     }
 }
