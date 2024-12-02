@@ -17,3 +17,6 @@ let readFileLinesByDay (year: int, day: int) : string array =
     let formattedDay = sprintf "day%02i.txt" day
     readFileLines(year, formattedDay)
 
+let readEveryoneCodes (filename: string) : string =
+    Path.Combine(assemblyDirectory, "./Data/EveryoneCodes", filename) 
+    |> File.ReadAllText

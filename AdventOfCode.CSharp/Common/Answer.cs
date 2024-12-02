@@ -1,4 +1,4 @@
-﻿namespace AdventOfCode.Solutions.Common;
+﻿namespace EverybodyCodes.Common;
 
 public abstract class Answer
 {

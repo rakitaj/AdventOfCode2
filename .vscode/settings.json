@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "*.fsproj": "xml",
+        "*.slnx": "xml"
     },
     "files.exclude": {
         "**/.git": true,

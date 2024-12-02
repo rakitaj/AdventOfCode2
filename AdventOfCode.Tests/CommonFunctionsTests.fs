@@ -2,7 +2,7 @@
 
 open Xunit
 open CommonFunctions
-open AdventOfCode.Solutions.Common
+open EverybodyCodes.Common
 open FsUnit.Xunit
 
 [<Theory>]

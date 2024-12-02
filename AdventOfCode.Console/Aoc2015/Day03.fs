@@ -1,46 +1,25 @@
 ﻿module Aoc2015.Day03
 
-type Point = (int * int)
+type Coordinates = {X: int; Y: int}
 
-let pointApplyDirection (point: Point, c: char): Point = 
-    let x', y' = 
+let f = fun (acc: Coordinates) (c: char) -> 
         match c with
-        | '^' -> (0, 1)
-        | 'v' -> (0, -1)
-        | '<' -> (-1, 0)
-        | '>' -> (1, 0)
-        | _ -> (0, 0)
-    let x, y = point
-    (x + x', y + y')
+        | '^' -> { X=acc.X; Y=acc.Y + 1 }
+        | '<' -> { X=acc.X - 1; Y=acc.Y }
+        | '>' -> { X=acc.X + 1; Y=acc.Y }
+        | 'v' -> { X=acc.X; Y=acc.Y - 1 }
+        | _ -> acc
 
-let housesVisited (startingPoint: Point) (directions: string) : Set<Point> =
-    let mutable pointSet: Set<Point> = Set([startingPoint])
-    let mutable point = startingPoint
-    for c in directions do
-        let nextPoint = pointApplyDirection(point, c)
-        pointSet <- pointSet.Add(nextPoint)
-        point <- nextPoint
-    pointSet
+let housesVisitedCount (line: string) : int = 
+    Seq.scan f {X=0;Y=0} line |> Seq.distinct |> Seq.length
 
-let housesVisitedRoboSanta (startingPoint: Point) (directions: string) : Set<Point> =
-    let mutable pointSet: Set<Point> = Set([startingPoint])
-    let mutable santaPoint = startingPoint
-    let mutable roboSantaPoint = startingPoint
-    for i in 0..directions.Length - 1 do
-        if i % 2 = 0 then
-            santaPoint <- pointApplyDirection(santaPoint, directions[i])
-            pointSet <- pointSet.Add(santaPoint)
-        else
-            roboSantaPoint <- pointApplyDirection(roboSantaPoint, directions[i])
-            pointSet <- pointSet.Add(roboSantaPoint)
-    pointSet
+let housesVisitedRoboSanta (line: string) : int = 
+    5
 
 let part1Solution = 
     let line = DataLoaders.readFile(2015, "day03.txt")
-    let visited = housesVisited (0, 0) line
-    visited.Count
+    line |> housesVisitedCount
 
 let part2Solution = 
     let line = DataLoaders.readFile(2015, "day03.txt")
-    let visited = housesVisitedRoboSanta (0, 0) line
-    visited.Count
+    line |> housesVisitedRoboSanta

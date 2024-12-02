@@ -1,7 +1,5 @@
 ﻿module Aoc2015.Day02
 
-open DataLoaders
-
 type Box = {L: int; W: int; H: int}
 
 let parseLine (line: string) : Box =

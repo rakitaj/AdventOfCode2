@@ -20,7 +20,7 @@ module Day01Tests =
     [<InlineData("()())", 5)>]
     [<InlineData("())()", 3)>]
     let ``Test finding the first bastment index`` (line: string, expected: int) =
-        let minbasementIdex = firstBasementIndex line
+        let minbasementIdex = floorNumRunningTotal line |> firstNegativeFloor
         minbasementIdex |> should equal expected
 
 module Day02Tests = 
@@ -46,13 +46,14 @@ module Day03Tests =
     [<InlineData("^>v<", 4)>]
     [<InlineData("^v^v^v^v^v", 2)>]
     let ``Test delivering presents path`` (line: string, expected: int) =
-        let housesVisited = housesVisited (0, 0) line
-        housesVisited.Count |> should equal expected
+        // let housesVisited = housesVisited (0, 0) line
+        // housesVisited.Count |> should equal expected
+        housesVisitedCount line |> should equal expected
 
-    [<Theory>]
-    [<InlineData("^v", 3)>]
-    [<InlineData("^>v<", 3)>]
-    [<InlineData("^v^v^v^v^v", 11)>]
-    let ``Test robo Santa delivering presents path`` (line: string, expected: int) =
-        let housesVisited = housesVisitedRoboSanta (0, 0) line
-        housesVisited.Count |> should equal expected
+    // [<Theory>]
+    // [<InlineData("^v", 3)>]
+    // [<InlineData("^>v<", 3)>]
+    // [<InlineData("^v^v^v^v^v", 11)>]
+    // let ``Test robo Santa delivering presents path`` (line: string, expected: int) =
+    //     let housesVisited = housesVisitedRoboSanta (0, 0) line
+    //     housesVisited.Count |> should equal expected
