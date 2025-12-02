@@ -9,6 +9,7 @@
     <Compile Include="Aoc2015\Day03.fs" />
     <Compile Include="Aoc2015\Day02.fs" />
     <Compile Include="Aoc2015\Day01.fs" />
+    <Compile Include="Aoc2025\Day01.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
   <ItemGroup>
