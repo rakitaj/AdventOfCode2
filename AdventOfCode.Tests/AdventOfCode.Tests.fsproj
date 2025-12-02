@@ -1,23 +1,22 @@
-<Project Sdk="MSTest.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <!-- <IsPackable>false</IsPackable>
     <GenerateProgramFile>false</GenerateProgramFile>
-    <IsTestProject>true</IsTestProject> -->
+    <IsTestProject>true</IsTestProject>
+    <OutputType>Exe</OutputType>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="CommonFunctionsTests.fs" />
     <Compile Include="Aoc2015Tests.fs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Fs30Unit.MsTest" Version="6.0.1" />
-    <!-- <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
-    <PackageReference Include="MSTest.TestAdapter" Version="3.2.2" />
-    <PackageReference Include="MSTest.TestFramework" Version="3.2.2" /> -->
-    <PackageReference Include="coverlet.collector" Version="6.0.0">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="xunit.v3" Version="3.2.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5">
       <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="FsUnit.xUnit" Version="7.1.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FSharpLogic\FSharpLogic.fsproj" />
