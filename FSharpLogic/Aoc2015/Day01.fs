@@ -11,7 +11,7 @@ let calcFloor (line: string) : int =
     Seq.fold f 0 line
 
 let part1Solution : int = 
-    let line = DataLoaders.readFile(2015, "day01.txt")
+    let line = DataLoaders.readFile 2015 "day01.txt"
     calcFloor(line)
     
 let floorNumRunningTotal (line: string) : int seq =
@@ -22,6 +22,6 @@ let firstNegativeFloor (running_total: int seq) : int =
     running_total |> Seq.findIndex ((=) -1)
 
 let part2Solution : int =
-    DataLoaders.readFile(2015, "day01.txt")
+    DataLoaders.readFile 2015 "day01.txt"
     |> floorNumRunningTotal
     |> firstNegativeFloor

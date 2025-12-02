@@ -8,5 +8,6 @@
         "**/.DS_Store": true,
         "**/Thumbs.db": true,
         "**/obj": true
-    }
+    },
+    "FSharp.dotnetRoot": "/usr/bin"
 }

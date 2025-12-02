@@ -16,9 +16,9 @@ let calculateRibbonLength (box: Box): int =
     minTwoSides[0] + minTwoSides[0] + minTwoSides[1] + minTwoSides[1] + (box.H * box.L * box.W)
 
 let part1Solution = 
-    let lines = DataLoaders.readFileLinesByDay(2015, 2)
+    let lines = DataLoaders.readFileLinesStr 2015 2
     lines |> Seq.map parseLine |> Seq.map calculateWrappingPaper |> Seq.sum
 
 let part2Solution = 
-    let lines = DataLoaders.readFileLinesByDay(2015, 2)
+    let lines = DataLoaders.readFileLinesStr 2015 2
     lines |> Seq.map parseLine |> Seq.map calculateRibbonLength |> Seq.sum
