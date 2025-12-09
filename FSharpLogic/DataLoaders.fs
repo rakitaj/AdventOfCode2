@@ -9,17 +9,32 @@ let readFile (year: int) (filename: string) : string =
     Path.Combine(assemblyDirectory, "./Data", $"{year}", filename) 
     |> File.ReadAllText
 
-let readFileLines (year: int, filename: string) : string array =
-    Path.Combine(assemblyDirectory, "./Data", $"{year}", filename) 
-    |> File.ReadAllLines
-
-let readFileLinesStr (year: int)  (day: int) : string array =
+let readFileString (year: int)  (day: int) : string =
     let formattedDay = sprintf "day%02i.txt" day
-    readFileLines(year, formattedDay)
+    readFile year formattedDay
 
-let readFileLinesInt (year: int) (day: int) : int array =
-    readFileLinesStr year day |> Array.map int
+let splitLines (raw: string) : string array =
+    raw.Split Environment.NewLine
 
 let readEveryoneCodes (filename: string) : string =
     Path.Combine(assemblyDirectory, "./Data/EveryoneCodes", filename) 
     |> File.ReadAllText
+
+type Answer =
+    | Int64 of int64
+    | Int32 of int
+    | Number of float
+    | Text of string
+
+    override this.ToString() =
+        match this with
+        | Int32 i -> string i
+        | Int64 i -> string i
+        | Text s    -> s
+        | Number f  -> sprintf "%g" f
+
+type AocChallenge =
+    { Year  : int
+      Day   : int
+      Part1 : string -> Answer
+      Part2 : string -> Answer }

@@ -1,4 +1,5 @@
 ﻿module Aoc2015.Day02
+open DataLoaders
 
 type Box = {L: int; W: int; H: int}
 
@@ -15,10 +16,18 @@ let calculateRibbonLength (box: Box): int =
     let minTwoSides = [box.H; box.L; box.W] |> Seq.sort |> Seq.toArray
     minTwoSides[0] + minTwoSides[0] + minTwoSides[1] + minTwoSides[1] + (box.H * box.L * box.W)
 
-let part1Solution = 
-    let lines = DataLoaders.readFileLinesStr 2015 2
-    lines |> Seq.map parseLine |> Seq.map calculateWrappingPaper |> Seq.sum
+let part1Solution input: Answer = 
+    input |> splitLines |> Seq.map parseLine 
+    |> Seq.map calculateWrappingPaper |> Seq.sum 
+    |> Answer.Int32
 
-let part2Solution = 
-    let lines = DataLoaders.readFileLinesStr 2015 2
-    lines |> Seq.map parseLine |> Seq.map calculateRibbonLength |> Seq.sum
+let part2Solution (input: string): Answer = 
+    input |> splitLines |> Seq.map parseLine |> Seq.map calculateRibbonLength 
+    |> Seq.sum |> Answer.Int32
+
+let challenge: AocChallenge = {
+    Year = 2015
+    Day = 1
+    Part1 = part1Solution
+    Part2 = part2Solution
+}
