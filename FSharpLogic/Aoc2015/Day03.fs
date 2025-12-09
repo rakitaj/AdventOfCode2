@@ -1,4 +1,5 @@
 ﻿module Aoc2015.Day03
+open DataLoaders
 
 type Coordinates = {X: int; Y: int}
 
@@ -16,10 +17,15 @@ let housesVisitedCount (line: string) : int =
 let housesVisitedRoboSanta (line: string) : int = 
     5
 
-let part1Solution = 
-    let line = DataLoaders.readFile 2015  "day03.txt"
-    line |> housesVisitedCount
+let part1Solution data =     
+    data |> housesVisitedCount |> Int32
 
-let part2Solution = 
-    let line = DataLoaders.readFile 2015 "day03.txt"
-    line |> housesVisitedRoboSanta
+let part2Solution data = 
+    data |> housesVisitedRoboSanta |> Int32
+
+let challenge = {
+    Year = 2015
+    Day = 3
+    Part1 = part1Solution
+    Part2 = part2Solution
+}
